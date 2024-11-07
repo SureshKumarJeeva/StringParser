@@ -6,6 +6,9 @@
 function add(str:string):number{
     let sum:number = 0;
     let delimiter:string = ",";
+    let negativeNumbers:Array<Number> = Array();
+    let negative:boolean = false;
+
     //condition to check if string contains delimiter char and extract it, if so
     if(str.substring(0,2) == "//"){
         delimiter = str.substring(2,str.indexOf("\n"));
@@ -17,9 +20,19 @@ function add(str:string):number{
         let arrayItems:Array<string> = items.split("\n");
         arrayItems.forEach(item =>{
             console.log(item);
-            sum += Number(item);
+            if(Number(item) < 0){
+                negativeNumbers.push(Number(item));
+                negative = true;
+            }
+            if(!negative)
+                sum += Number(item);
         });
     });
-    return sum;
+    if(!negative){
+        return sum;
+    }else{
+        //Throw error stating the negative numbers in the numbers string
+        throw new Error("Negative numbers are not allowed:"+negativeNumbers.join(","));
+    }
 }
 export default add;
