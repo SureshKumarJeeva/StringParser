@@ -1,4 +1,9 @@
 function add(str:string):number{
-    return 0;
+    let sum:number = 0;
+    let delimiter:string = ",";
+    str.split(delimiter).forEach(element => {
+        sum += Number(element);
+    });
+    return sum;
 }
 export default add;
