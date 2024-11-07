@@ -16,10 +16,8 @@ function add(numbers:string):number{
     }
     //parse through numbers in provided string and find the sum
     numbers.split(delimiter).forEach(items => {
-        console.log(items);
         let arrayItems:Array<string> = items.split("\n");
         arrayItems.forEach(item =>{
-            console.log(item);
             if(Number(item) < 0){
                 negativeNumbers.push(Number(item));
                 negative = true;
